@@ -1,0 +1,32 @@
+name: Release Please
+
+# Keeps a release PR open that bumps the version and CHANGELOG.md from the
+# Conventional Commit subjects on main. Merging it tags vX.Y.Z and creates
+# the GitHub release. mcp-kit is a library: the tag is the release, there
+# are no binaries. The servers pick up the new version through Dependabot.
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: release-please-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  release-please:
+    name: Create Release PR / Tag
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Run Release Please
+        uses: googleapis/release-please-action@45996ed1f6d02564a971a2fa1b5860e934307cf7 # v5.0.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json

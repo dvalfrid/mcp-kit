@@ -1,0 +1,21 @@
+name: Feature or move up
+description: A new shared package, or code moving up from a server
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Code moves into mcp-kit when **a second server needs it** (docs/dependency-rules.md §3). Service code and network code stay in the server.
+  - type: textarea
+    id: what
+    attributes:
+      label: What should the package do
+    validations:
+      required: true
+  - type: textarea
+    id: servers
+    attributes:
+      label: Which servers need it
+      description: At least two, with links to their issues.
+    validations:
+      required: true

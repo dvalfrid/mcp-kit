@@ -1,0 +1,39 @@
+name: Bug report
+description: A package in mcp-kit doesn't work as it should
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Never paste passwords, tokens or real personal data here.** Describe the input instead.
+  - type: input
+    id: package
+    attributes:
+      label: Package
+      placeholder: "keystore"
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: mcp-kit version and OS
+      placeholder: "v0.1.0 on Windows 11"
+    validations:
+      required: true
+  - type: input
+    id: server
+    attributes:
+      label: Which server ran into it
+      placeholder: "proton-calendar-mcp 0.1.0"
